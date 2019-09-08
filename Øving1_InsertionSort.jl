@@ -1,3 +1,5 @@
+# Function will sort list using the Insertion-sort algorithm.
+
 function insertionsort!(A)
     for j in 2:length(A)
         key = A[j]
@@ -9,3 +11,12 @@ function insertionsort!(A)
         A[i+1] = key
     end
 end
+
+
+A = [1, 5, 3, 4, 2, 9, 8]
+
+
+println("----- Program start -----")
+println(A)
+insertionsort!(A)
+println(A)
