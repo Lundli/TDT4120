@@ -37,20 +37,33 @@ function findindexinlist(linkedlist, index)
     end
 end
 
-
-#Exercise 2 - Stack
-
-
-
-
-
-# Main function
-function main()
+# Main function for exercise 1
+function main1()
     testList = createlinkedlist(5)
     println(testList)
     println(findindexinlist(testList, 5))
 end
 
 
+#Exercise 2 - Stack
+function reverseandlimit(array, maxnumber)
+    A = reverse(array)
+    for i in 1:length(A)
+        if A[i] > maxnumber
+            A[i] = maxnumber
+        end
+    end
+    return A
+end
 
-main()
+
+# Main function for exercise 2
+function main2()
+    array = [10,5,16,0]
+    println(array)
+
+    array = reverseandlimit(array, 8)
+    println(array)
+end
+
+
