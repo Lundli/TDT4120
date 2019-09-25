@@ -65,3 +65,26 @@ function mergesort(x)
 end
 
 
+#A = mergesort(array)
+#println(A)
+
+A = [1 2; 2 5; 6 3; 8 7]
+B = [2 3; 4 4; 5 1; 6 4]
+
+
+println(A, B)
+
+x = [1 2; 4 5; 3 2]
+
+println(x[2,:])
+
+t = [4 4]
+x[2,:] = t
+println(x[2,:])
+
+
+newArray = []
+
+append!(newArray, t)
+println(newArray)
+newArray[1, :] = t
