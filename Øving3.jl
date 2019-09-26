@@ -107,3 +107,32 @@ function binaryintervalsearch(x, delta, coordinate)
     end
     return lower_index, upper_index
 end
+
+
+# Exercise 3: Brute force
+
+function bruteforce(x)
+    # Takes in a two dimensional array, ex: [1 1; 10 0; 2 2; 5 5]
+    arrayLength = Int(length(x)/2)
+    best = -1
+
+    for i = 1: arrayLength
+        for j = i+1:arrayLength
+
+            X = x[i, 1] - x[j, 1]
+            Y = x[i, 2] - x[j, 2]
+            distance = X*X + Y*Y
+            distance = sqrt(distance)
+
+            if best == -1
+                best = distance
+            else
+                if distance < best
+                    best = distance
+                end
+            end
+        end
+    end
+
+    return best
+end
