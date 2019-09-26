@@ -136,3 +136,41 @@ function bruteforce(x)
 
     return best
 end
+
+
+# Exercise 4: Split in two
+
+function splitintwo(x,y)
+    arrayLength = Int(length(x)/2)
+    middle = arrayLength ÷ 2
+
+    xLeft = zeros(middle, 2)
+    xRight = zeros(arrayLength-middle, 2)
+
+    for i = 1:middle
+            xLeft[i, :] = x[i, :]
+        end
+    i = 1
+    for j = middle+1:arrayLength
+        xRight[i, :] = x[j, :]
+    i += 1
+    end
+
+    yLeft = zeros(middle, 2)
+    yRight = zeros(arrayLength-middle, 2)
+    for i = 1:middle
+            yLeft[i, :] = y[i, :]
+        end
+    i = 1
+    for j = middle+1:arrayLength
+        yRight[i, :] = y[j, :]
+    i += 1
+    end
+
+    return xLeft, xRight, yLeft, yRight
+end
+
+#x = [1.0 2.0; 2.0 3.0; 3.0 2.0; 4.0 5.0; 6.0 6.0; 7.0 1.0]
+#y = [7.0 1.0; 1.0 2.0; 3.0 2.0; 2.0 3.0; 4.0 5.0; 6.0 6.0]
+
+#splitintwo(x,y)
