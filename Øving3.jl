@@ -19,10 +19,12 @@ function mergearrays(x,y,coordinate)
             newList[k,:] = y[j,:]
             j += 1
             k += 1
+        ## if no more left in y, add leftovers from x
         elseif (j > yLength)
             newList[k,:] = x[i,:]
             i += 1
             k += 1
+
         elseif x[i, coordinate] <= y[j, coordinate]
             newList[k,:] = x[i,:]
             i += 1
@@ -65,7 +67,43 @@ function mergesort(x, coordinate)
 
         result = mergearrays(left, right, coordinate)
         return result
+    end
+end
 
+
+
+# Exercise 2: Binary search
+function binaryintervalsearch(x, delta, coordinate)
+    lower_index = -1
+    upper_index = -1
+
+
+    ## Find median
+    ArrayLength = Int(length(x) / 2)
+    if ((ArrayLength % 2) == 1)
+        medianIndex = Int(((ArrayLength÷2)+1))
+        median = x[medianIndex, coordinate]
+    else
+        m1 = Int(((ArrayLength÷2)))
+        m2 = Int((ArrayLength÷2)+1)
+        median = (x[m1, coordinate] + x[m2, coordinate]) / 2
     end
 
+
+    min = median - delta
+    max = median + delta
+
+
+    for i = 1:ArrayLength
+        if min <= x[i, coordinate] <= max
+            if (lower_index == -1)
+                lower_index = i
+            end
+        end
+
+        if min <= x[i, coordinate] <= max
+            upper_index = i
+        end
+    end
+    return lower_index, upper_index
 end
