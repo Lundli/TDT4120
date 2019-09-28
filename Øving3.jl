@@ -169,8 +169,3 @@ function splitintwo(x,y)
 
     return xLeft, xRight, yLeft, yRight
 end
-
-#x = [1.0 2.0; 2.0 3.0; 3.0 2.0; 4.0 5.0; 6.0 6.0; 7.0 1.0]
-#y = [7.0 1.0; 1.0 2.0; 3.0 2.0; 2.0 3.0; 4.0 5.0; 6.0 6.0]
-
-#splitintwo(x,y)
