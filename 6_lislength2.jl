@@ -14,11 +14,11 @@ function lislength(s)
         end
         mls[i] = n
     end
-    #return mls
+    return mls
     return maximum(mls) # Returnerer det største tallet i listen
 end
 
-a = [5,3,3,6,7]
+a = [5, 3, 3, 6, 7]
 
 println(
     lislength(a)
