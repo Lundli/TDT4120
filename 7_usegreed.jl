@@ -12,3 +12,19 @@ function usegreed(coins)
     end
     return flag
 end
+
+
+### Tests ###
+printstyled("\n\n\n---------------\nTests\n---------------\n"; color = :magenta)
+
+using Test
+@testset "Tester" begin
+	@test usegreed([20, 10, 5, 1]) == true
+  @test usegreed([20, 15, 10, 5, 1]) == false
+  @test usegreed([100, 1]) == true
+  @test usegreed([5, 4, 3, 2, 1]) == false
+  @test usegreed([1]) == true
+
+end
+
+println("---------------------------------------------------------\n\n")
