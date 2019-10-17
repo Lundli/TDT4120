@@ -6,16 +6,22 @@ function mincoinsgreedy(coins, value)
     usedCoins = 0
     remaining = value
 
-
-    # for loop start
     for i = 1:length(coins)
-    # todo
+        while ((remaining >= coins[i]) && ((remaining - coins[i]) >= 0))
+            remaining -= coins[i]
+            usedCoins += 1
+
+            # no need to continue looping if amount already reached
+            if (remaining == 0)
+                break
+            end
+        end
+
     end
-
-
     return usedCoins
 end
 
 
 mincoinsgreedy([1000,500,100,20,5,1],8)
+
 
