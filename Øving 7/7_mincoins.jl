@@ -10,6 +10,30 @@ function usegreed(coins)
     end
     return flag
 end
+
+# Helper function from exercise 2
+function mincoinsgreedy(coins, value)
+    # Coins: a list of available coins
+    # Value: a value composed by as few coins as possible
+
+    usedCoins = 0
+    remaining = value
+
+    for i = 1:length(coins)
+        while ((remaining >= coins[i]) && ((remaining - coins[i]) >= 0))
+            remaining -= coins[i]
+            usedCoins += 1
+
+            # no need to continue looping if amount already reached
+            if (remaining == 0)
+                break
+            end
+        end
+
+    end
+    return usedCoins
+end
+
 #--------------------------------------------#
 
 
@@ -19,48 +43,45 @@ function mincoins(coins, value)
     inf = typemax(Int)
 
 
-	# If value is zero
+	# If value is zero: zero coins needed
     if (value == 0)
         return 0
     end
 
 
-	# If greedy approach works
+	# If greedy approach works: return result of greedy algorithm
 	if (usegreed(coins))
-		minCoins = usegreed(coins)
+		minCoins = mincoinsgreedy(coins, value)
 		return minCoins
 	end
 
 
-    # Try each coin lower than Value
 
+    # Try each coin lower than Value
     for i = 1:length(coins)
         if (coins[i] <= value)
 
     		# recursive call
-            sub_res = mincoins(coins, value-coins[i])
+            req = mincoins(coins, value-coins[i])
 
-            # Check for INT_MAX to avoid overflow and see if
-            # result can minimized
-            if (sub_res != inf && sub_res + 1 < inf)
-                inf = sub_res + 1
+            if (req != inf) && (req + 1 < inf)
+                inf = req + 1
             end
         end
     end
 
+	# return minimum amount of coins needed
     return inf
 end
 
 
 
-
+println("--------------- Tests start -----------------------------\n\n")
 using Test
-@testset "Tester" begin
-	@test mincoins([4,3,1],18) == 5
+@testset "Tests" begin
+  @test mincoins([4,3,1],18) == 5
   @test mincoins([1000,500,100,30,7,1],14) == 2
   @test mincoins([40, 30, 20, 10, 1], 90) == 3
 end
 
-println("\nFungerte alt? Prøv å kjør koden i inginious!")
-println("Husk at disse testene ikke alltid sjekker alle edge-cases")
 println("---------------------------------------------------------\n\n")

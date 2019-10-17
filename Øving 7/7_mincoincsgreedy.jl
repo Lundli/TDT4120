@@ -11,7 +11,6 @@ function mincoinsgreedy(coins, value)
             remaining -= coins[i]
             usedCoins += 1
 
-            # no need to continue looping if amount already reached
             if (remaining == 0)
                 break
             end
