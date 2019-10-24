@@ -1,7 +1,5 @@
 using DataStructures: Queue, enqueue!, dequeue!
 
-goal = nothing
-
 mutable struct Node
     i::Int
     j::Int
