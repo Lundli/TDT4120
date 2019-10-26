@@ -13,7 +13,18 @@ Node(i, j, floor=true) = Node(i, j, floor, [], nothing, nothing, nothing)
 
 
 function makepathto(goalnode)
-    #TODO
+    # NOTE: Psudo-code, does not run
+    Path = []
+
+    node = goalnode
+    while node.predecessor != Nothing
+        push!(Path, (coordinates of node))
+        node = node.predecessor
+    end
+
+    Path = Path.reverse!
+    return Path
+
 end
 
 
