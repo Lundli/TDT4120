@@ -9,4 +9,5 @@ function hammingdistance(s1, s2)
     end
     return count
 
+
 end
